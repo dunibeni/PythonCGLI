@@ -26,13 +26,13 @@ I created this because other flashy UI-based solutions like Playnite were painfu
 **Running:**
 1. Clone or download the repo
 2. Edit art.txt and setting.conf as you like
-
-**setting.conf help:**
----
-1. line: "The ASCII art color"
-2. line: "The Menu color"
-3. line: "The Background color"
----
-
 3. Place lnk-s to the apps folder
 4. Launch main.py from the windows terminal app
+
+**setting.conf help:**
+
+| Line     | Function |
+| ---      | ---       |
+| 1. line | The ASCII art color |
+| 2. line | The Menu color      |
+| 3. line | The Background color|
