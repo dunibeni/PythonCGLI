@@ -2,12 +2,13 @@ import os
 import pylnk3
 from colorama import Fore, Back, Style
 from pathlib import Path
-import random
 valid=False
 suc= False
 itsanumber=False
 count=1
 apps=[]
+app=[]
+m=45
 with open("settings.conf","r",encoding="UTF-8") as conf:
     artcolor= getattr(Fore, conf.readline().strip(), Fore.WHITE)
     menucolor= getattr(Fore, conf.readline().strip(), Fore.WHITE)
@@ -17,19 +18,23 @@ with open("art.dat","r", encoding="UTF-8") as art:
         i = i.strip().split(";")
         for thing in i:
             print(artcolor + thing)
-
+print(menucolor+"\n╔", m*"═","╗")
 for file in Path("apps").glob("*lnk"):
     pic=pylnk3.parse(str(file))
     cut=pic.path
     apps.append(cut)
-    print(menucolor + f"[{count}] ", end="")
+    print(f"║ [{count}] ", end="")
     for i in str(file.name):
         if i == ".":
             break
         else:
             print(i, end="")
-    print(end="\n")
+            app.append(i)
+    print(" " * ((m-3)-len(app)), end="")
+    print("║")
+    app=[]
     count+=1
+print("╚", m*"═","╝")
 while valid == False:
     try:
         inpt=int(input("\nChoice: "))
