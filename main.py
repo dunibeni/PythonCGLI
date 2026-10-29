@@ -2,10 +2,12 @@ import os
 import pylnk3
 from colorama import Fore, Back, Style
 from pathlib import Path
-apps=[]
-count=1
-inpt=0
+import random
+valid=False
+suc= False
 itsanumber=False
+count=1
+apps=[]
 with open("settings.conf","r",encoding="UTF-8") as conf:
     artcolor= getattr(Fore, conf.readline().strip(), Fore.WHITE)
     menucolor= getattr(Fore, conf.readline().strip(), Fore.WHITE)
@@ -20,7 +22,7 @@ for file in Path("apps").glob("*lnk"):
     pic=pylnk3.parse(str(file))
     cut=pic.path
     apps.append(cut)
-    print(f"[{count}] ", end="")
+    print(menucolor + f"[{count}] ", end="")
     for i in str(file.name):
         if i == ".":
             break
@@ -28,22 +30,22 @@ for file in Path("apps").glob("*lnk"):
             print(i, end="")
     print(end="\n")
     count+=1
-    valid=False
 while valid == False:
     try:
         inpt=int(input("\nChoice: "))
-        valid=True
-        print("Launching...")
-    except(ValueError):
-        if inpt <= count:
+        if inpt < 1 or inpt >= count+1:
             if itsanumber == True:
-                print("Yes, it's a number, BUT NOT AN OPTION")
+                print("Yes, it's finally a number, BUT NOT AN OPTION")
+                itsanumber = False
             else:
                 print("Please enter a Valid Option")
         else:
-            print("Please enter a N-U-M-B-E-R... ")
-            itsanumber=True
+            valid=True
+            print("Launching...")   
+    except(ValueError):    
+        print("Please enter a N-U-M-B-E-R... ")
+        itsanumber=True
 try:
-    os.system(apps[inpt-1])
+    os.startfile(apps[inpt-1])
 except:
-    print("Error")
+    print("Unexpected Error")
