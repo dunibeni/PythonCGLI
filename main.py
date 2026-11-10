@@ -23,12 +23,9 @@ for file in Path("apps").glob("*lnk"):
     cut=pic.path
     apps.append(cut)
     print(f"║ [{count}] ", end="")
-    for i in str(file.name):
-        if i == ".":
-            break
-        else:
-            print(i, end="")
-            app.append(i)
+    for i in str(file.name)[:-4]:
+        print(i, end="")
+        app.append(i)
     print(" " * (((m-4)-(len(str(count))))-len(app)), end="")
     print("║")
     app=[]
