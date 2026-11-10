@@ -23,11 +23,13 @@ I created this because other flashy UI-based solutions like Playnite were painfu
 - Pathlib
 - Colorama
 
-**Running:**
-1. Clone or download the repo
-2. Edit art.txt and setting.conf as you like
-3. Place lnk-s to the apps folder
-4. Launch main.py from the windows terminal app
+**How to run:**
+
+1. Download and extract the archive.
+2. Edit art.txt and settings.conf as desired.
+3. Place your game icons into the apps folder.
+4. Open Windows Terminal and navigate to the folder containing the files from the terminal.
+5. Run the application using the .\PythonCGLI.exe command.
 
 **setting.conf help:**
 
